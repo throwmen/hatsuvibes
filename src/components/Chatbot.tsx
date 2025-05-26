@@ -21,8 +21,14 @@ export default function Chatbot() {
     setMessages((prev) => [...prev, `USER_SPLIT${userMessage}`]);
     setInput("");
 
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    if (!apiUrl) {
+      throw new Error("NEXT_PUBLIC_API_URL no está definida");
+    }
+
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/chat", {
+      const res = await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: userMessage }),

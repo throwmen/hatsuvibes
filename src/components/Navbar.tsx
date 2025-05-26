@@ -55,7 +55,7 @@ export default function Navbar() {
                 {/* Logo container */}
                 <div className="relative z-10 px-3 py-1 rounded-xl">
                   <Image
-                    src="/logo.webp"
+                    src="/Logo.png"
                     alt="Logo Hatsu"
                     width={140}
                     height={45}
