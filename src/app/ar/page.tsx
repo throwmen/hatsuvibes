@@ -11,17 +11,17 @@ function EnhancedArApp() {
 
   useEffect(() => {
     let previousFrame = null;
-    let rotationSpeed = 0.01;
+    const rotationSpeed = 0.01;
     let cubes = [];
     let scene, camera, renderer;
     let frameCount = 0;
 
     // Variables para tracking de color
-    let targetColor = { r: 255, g: 0, b: 0 }; // Rojo por defecto
-    let colorThreshold = 50;
+    const targetColor = { r: 255, g: 0, b: 0 }; // Rojo por defecto
+    const colorThreshold = 50;
 
     // Variables para detección de esquinas
-    let corners = [];
+    // const corners = [];
 
     const detectColorBlob = (imageData) => {
       const width = 64;
@@ -230,7 +230,7 @@ function EnhancedArApp() {
           .filter((edge) => edge.strength > 50)
           .slice(0, 20);
 
-        strongEdges.forEach((edge, index) => {
+        strongEdges.forEach((edge) => {
           const geometry = new THREE.ConeGeometry(0.1, 0.3, 4);
           const material = new THREE.MeshBasicMaterial({
             color: 0xffff00,
