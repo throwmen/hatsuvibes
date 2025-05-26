@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
 import { posts } from "../posts";
 
-interface Params {
+interface PageProps {
   params: { id: string };
 }
 
-export default function PostPage({ params }: Params) {
+export default function PostPage({ params }: PageProps) {
   const post = posts.find((p) => p.id === params.id);
 
   if (!post) {
@@ -32,4 +32,6 @@ export default function PostPage({ params }: Params) {
       )}
     </article>
   );
+}
+
 }
