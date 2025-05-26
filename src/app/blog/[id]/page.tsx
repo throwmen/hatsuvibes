@@ -1,15 +1,17 @@
 import { notFound } from "next/navigation";
 import { posts } from "../posts";
 
-interface PageProps {
-  params: { id: string };
-}
+type Props = {
+  params: {
+    id: string;
+  };
+};
 
-export default function PostPage({ params }: PageProps) {
+export default async function PostPage({ params }: Props) {
   const post = posts.find((p) => p.id === params.id);
 
   if (!post) {
-    return notFound();
+    notFound();
   }
 
   return (
@@ -34,4 +36,8 @@ export default function PostPage({ params }: PageProps) {
   );
 }
 
+export async function generateStaticParams() {
+  return posts.map((post) => ({
+    id: post.id,
+  }));
 }

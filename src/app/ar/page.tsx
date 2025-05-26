@@ -11,7 +11,6 @@ function EnhancedArApp() {
 
   useEffect(() => {
     let previousFrame = null;
-    const rotationSpeed = 0.01;
     let cubes = [];
     let scene, camera, renderer;
     let frameCount = 0;
@@ -134,7 +133,7 @@ function EnhancedArApp() {
       }
 
       let diff = 0;
-      let motionCenters = [];
+      const motionCenters = [];
 
       // Detectar áreas de movimiento
       for (let y = 0; y < 48; y += 4) {
