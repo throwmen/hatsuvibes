@@ -11,7 +11,8 @@ Ahí nació Hatsu Vibes, una propuesta que transforma una bebida funcional en un
 Queremos que cada vez que alguien elija una de nuestras bebidas, lo haga porque conecta con su estado interior. Porque le habla a su mood. Porque encuentra en ese color, ese aroma y ese diseño, una representación de lo que vive por dentro.
 
 No es solo un producto. Es una forma de estar en el mundo. Y este es apenas el comienzo.`,
-    instagramUrl: "",
+    instagramUrl:
+      "https://www.instagram.com/reel/DHuJxWmx_q8/embed/captioned/?cr=1&v=14&wp=625&rd=https%3A%2F%2Fhatsuvibes.wordpress.com&rp=%2F2025%2F04%2F06%2Fmas-que-una-bebida-una-vibra-que-se-siente%2F",
   },
   {
     id: "vibes2",

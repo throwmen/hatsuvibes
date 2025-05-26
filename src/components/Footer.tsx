@@ -100,7 +100,7 @@ export default function Footer() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-emerald-500/20"
+                  className="cursor-pointer w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-emerald-500/20"
                 >
                   Suscribirse
                 </button>

@@ -1,5 +1,3 @@
-// app/productos/productos.ts
-
 export const productos = [
   {
     id: "te-blanco-400ml",

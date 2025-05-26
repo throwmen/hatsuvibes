@@ -18,6 +18,18 @@ export default function PostPage({ params }: Params) {
       <p className="text-lg leading-relaxed whitespace-pre-line">
         {post.contenido}
       </p>
+      {post.instagramUrl && (
+        <div className="flex justify-center">
+          <iframe
+            src={post.instagramUrl}
+            allowTransparency={true}
+            allowFullScreen={true}
+            frameBorder="0"
+            height="600"
+            className="w-full max-w-md border border-gray-300 rounded-md"
+          ></iframe>
+        </div>
+      )}
     </article>
   );
 }

@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { productos } from "./productos/productos";
+import { posts } from "./blog/posts";
+import { mezclas } from "./mezclas/mezclas";
 import Link from "next/link";
 
 export default function Home() {
@@ -66,7 +68,7 @@ export default function Home() {
 
                   {/* CTA button con enlace dinámico */}
                   <Link href={`/productos/${item.id}`}>
-                    <button className="w-full mt-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-3 px-6 rounded-xl font-medium hover:from-emerald-600 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25">
+                    <button className="cursor-pointer w-full mt-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-3 px-6 rounded-xl font-medium hover:from-emerald-600 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25">
                       Explorar producto
                     </button>
                   </Link>
@@ -90,38 +92,10 @@ export default function Home() {
           </div>
 
           <div className="max-w-5xl mx-auto space-y-8">
-            {[
-              {
-                id: 1,
-                title:
-                  "Crear con la comunidad: el poder de co-crear experiencias",
-                description:
-                  "Una bebida que no solo responde a una necesidad funcional, sino a un deseo profundo de conexión emocional. Hatsu Vibes es construcción colectiva, una comunidad que sabe lo que quiere.",
-                color: "from-teal-500 to-emerald-600",
-                bgColor: "from-teal-50 to-emerald-50",
-              },
-              {
-                id: 2,
-                title:
-                  "El poder de una experiencia multisensorial: cuando sentir importa más que decir",
-                description:
-                  "Cada botella de Hatsu Vibes transmite una vibra única que conecta con tu estado de ánimo y te acompaña, cuidando tanto el cuerpo como el alma a través de sabor, diseño y música.",
-                color: "from-emerald-500 to-teal-600",
-                bgColor: "from-emerald-50 to-teal-50",
-              },
-              {
-                id: 3,
-                title:
-                  "Una generación que ya no quiere que le vendan… quiere sentir que la entienden",
-                description:
-                  "Hatsu Vibes nace para quienes buscan autenticidad, bienestar y una conexión emocional real con sus bebidas, más allá de solo consumir: para quienes valoran la estética, empatía y creatividad.",
-                color: "from-cyan-500 to-teal-600",
-                bgColor: "from-cyan-50 to-teal-50",
-              },
-            ].map((post, index) => (
+            {posts.slice(1, 4).map((post, index) => (
               <Link
                 key={post.id}
-                href={`/blog/post-${post.id}`}
+                href={`/blog/${post.id}`}
                 className="block group"
                 style={{
                   animationDelay: `${index * 150}ms`,
@@ -129,26 +103,38 @@ export default function Home() {
                 }}
               >
                 <div
-                  className={`relative p-8 bg-gradient-to-r ${post.bgColor} rounded-2xl border border-white/50 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 overflow-hidden`}
+                  className={`relative p-8 bg-gradient-to-r ${
+                    index === 0
+                      ? "from-teal-50 to-emerald-50"
+                      : index === 1
+                      ? "from-emerald-50 to-teal-50"
+                      : "from-cyan-50 to-teal-50"
+                  } rounded-2xl border border-white/50 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 overflow-hidden`}
                 >
                   <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_2px_2px,_currentColor_1px,_transparent_0)] bg-[length:32px_32px] text-emerald-600 group-hover:animate-pulse"></div>
 
                   <div className="relative flex items-start space-x-8">
                     <div className="flex-shrink-0">
                       <div
-                        className={`w-20 h-20 bg-gradient-to-br ${post.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                        className={`w-20 h-20 bg-gradient-to-br ${
+                          index === 0
+                            ? "from-teal-500 to-emerald-600"
+                            : index === 1
+                            ? "from-emerald-500 to-teal-600"
+                            : "from-cyan-500 to-teal-600"
+                        } rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
                       >
                         <span className="text-white font-bold text-2xl">
-                          {post.id}
+                          {index + 1}
                         </span>
                       </div>
                     </div>
                     <div className="flex-grow">
                       <h3 className="text-3xl font-bold mb-4 text-slate-800 group-hover:text-emerald-700 transition-colors duration-300">
-                        {post.title}
+                        {post.titulo}
                       </h3>
                       <p className="text-slate-600 leading-relaxed text-lg mb-4">
-                        {post.description}
+                        {post.contenido.split("\n")[0]}
                       </p>
                       <div className="flex items-center text-emerald-600 font-semibold group-hover:text-emerald-700 transition-colors">
                         <span>Leer artículo completo</span>
@@ -188,28 +174,10 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {[
-              {
-                id: 1,
-                title: "Energía Matutina",
-                subtitle: "Despertar Natural",
-                description:
-                  "Una combinación revitalizante de té verde, jengibre y cítricos que despierta tus sentidos y energiza tu mañana de forma natural.",
-                gradient: "from-amber-400 via-orange-400 to-red-400",
-                bgGradient: "from-amber-50 via-orange-50 to-red-50",
-              },
-              {
-                id: 2,
-                title: "Calma Nocturna",
-                subtitle: "Relajación Profunda",
-                description:
-                  "Mezcla relajante de manzanilla, lavanda y menta que te ayuda a encontrar la paz interior y prepararte para un descanso reparador.",
-                gradient: "from-purple-400 via-indigo-400 to-blue-400",
-                bgGradient: "from-purple-50 via-indigo-50 to-blue-50",
-              },
-            ].map((mezcla, index) => (
-              <div
+            {mezclas.map((mezcla, index) => (
+              <Link
                 key={mezcla.id}
+                href={`/mezclas/${mezcla.id}`}
                 className="group relative"
                 style={{
                   animationDelay: `${index * 300}ms`,
@@ -217,7 +185,7 @@ export default function Home() {
                 }}
               >
                 <div
-                  className={`relative bg-gradient-to-br ${mezcla.bgGradient} rounded-3xl border border-white/50 p-10 hover:shadow-2xl transition-all duration-700 overflow-hidden hover:-translate-y-3`}
+                  className={`relative bg-gradient-to-br from-amber-50 via-emerald-50 to-amber-100 rounded-3xl border border-white/50 p-10 hover:shadow-2xl transition-all duration-700 overflow-hidden hover:-translate-y-3`}
                 >
                   {/* Floating orbs */}
                   <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-white/20 to-white/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-1000"></div>
@@ -225,44 +193,42 @@ export default function Home() {
 
                   {/* Image container */}
                   <div className="relative aspect-video mb-8 overflow-hidden rounded-2xl shadow-lg">
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${mezcla.gradient} opacity-20`}
-                    ></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400 via-emerald-400 to-amber-600 opacity-20"></div>
                     <Image
-                      src={`/mezclas/mezcla${mezcla.id}.jpg`}
-                      alt={`Mezcla ${mezcla.id}`}
+                      src={`/mezclas/${mezcla.imagen}`}
+                      alt={mezcla.nombre}
                       width={500}
                       height={300}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-
-                    {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
 
                     {/* Category badge */}
-                    <div
-                      className={`absolute top-4 left-4 bg-gradient-to-r ${mezcla.gradient} text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg`}
-                    >
-                      {mezcla.subtitle}
+                    <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-500 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                      {mezcla.producto_destacado_id}
                     </div>
                   </div>
 
                   <div className="relative z-10">
-                    <h3 className="font-bold text-3xl text-slate-800 mb-4 group-hover:text-emerald-700 transition-colors duration-300">
-                      {mezcla.title}
+                    <h3 className="font-bold text-3xl text-slate-800 mb-2 group-hover:text-emerald-700 transition-colors duration-300">
+                      {mezcla.nombre}
                     </h3>
-                    <p className="text-slate-600 leading-relaxed text-lg mb-6">
-                      {mezcla.description}
+                    <p className="text-slate-600 text-sm mb-4">
+                      Por: {mezcla.autor} – {mezcla.fecha}
                     </p>
+                    <ul className="text-slate-600 leading-relaxed text-base mb-6 list-disc list-inside">
+                      {mezcla.ingredientes.map((ing, i) => (
+                        <li key={i}>
+                          {ing.nombre} – {ing.cantidad}
+                        </li>
+                      ))}
+                    </ul>
 
-                    {/* Enhanced CTA */}
+                    {/* Botón CTA */}
                     <div className="flex items-center justify-between">
-                      <button
-                        className={`bg-gradient-to-r ${mezcla.gradient} text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300`}
-                      >
-                        Ver detalles
+                      <button className="cursor-pointer bg-gradient-to-r from-amber-400 via-emerald-500 to-amber-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                        Ver preparación
                       </button>
-
                       <div className="flex items-center text-slate-500 group-hover:text-emerald-600 transition-colors">
                         <svg
                           className="w-6 h-6 group-hover:animate-bounce"
@@ -281,8 +247,59 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
+          </div>
+        </section>
+
+        {/* Sección: Experiencias Hatsu */}
+        <section id="experiencias" className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center mb-16 relative">
+            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-fuchsia-400 via-pink-500 to-rose-500 rounded-full"></div>
+            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-600 via-rose-600 to-fuchsia-800 bg-clip-text text-transparent mb-8 tracking-tight leading-tight">
+              Experiencias Hatsu: Más Allá de la Botella
+            </h2>
+            <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
+              Sumérgete en el universo Hatsu de una forma innovadora. Escanea,
+              interactúa y descubre contenido exclusivo que da vida a nuestras
+              vibras.
+            </p>
+          </div>
+
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+            <Link href="/ar">
+              <div className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:shadow-2xl hover:shadow-rose-400/20 transition-all duration-500 hover:border-pink-200">
+                <h3 className="text-3xl font-bold text-rose-700 mb-4">
+                  Realidad Aumentada Hatsu
+                </h3>
+                <p className="text-slate-600 text-lg leading-relaxed mb-4">
+                  Escanea el empaque y observa cómo los ingredientes cobran
+                  vida, o participa en mini-juegos interactivos.
+                </p>
+                <p className="text-slate-600 text-lg">
+                  La Realidad Aumentada (AR) con 8th Wall y otras tecnologías
+                  inmersivas son parte de nuestra visión para el futuro. Estamos
+                  trabajando para traer estas experiencias a la vida.
+                </p>
+              </div>
+            </Link>
+            <div className="p-8 bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 hover:shadow-2xl hover:shadow-fuchsia-400/20 transition-all duration-500 hover:border-pink-200">
+              <h3 className="text-3xl font-bold text-rose-700 mb-4">
+                Escanea y Descubre
+              </h3>
+              <p className="text-slate-600 text-lg leading-relaxed mb-4">
+                Busca los códigos QR en nuestros empaques Hatsu. Cada uno es una
+                puerta a una nueva experiencia digital.
+              </p>
+              <p className="text-slate-600 text-lg">
+                Sin necesidad de apps. Accede a animaciones 3D, filtros
+                exclusivos y juegos directamente desde tu navegador móvil.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-lg text-slate-600">Conoce Más Próximamente</p>
           </div>
         </section>
       </div>

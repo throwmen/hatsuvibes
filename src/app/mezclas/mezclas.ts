@@ -1,0 +1,55 @@
+export const mezclas = [
+  {
+    id: "cocktail-one-world",
+    nombre: "Cocktail – One World",
+    autor: "Hatsu",
+    fecha: "2023-11-15",
+    imagen: "cock-tail-one-world.png",
+    producto_destacado_id: "te-amarillo-400ml",
+    ingredientes: [
+      { nombre: "Hatsu Tea Amarillo", cantidad: "150 ml" },
+      { nombre: "Whisky", cantidad: "45 ml" },
+      { nombre: "Tequila", cantidad: "45 ml" },
+      { nombre: "Zumo de limón mandarino", cantidad: "15 ml" },
+      { nombre: "Carambolo", cantidad: "6 rodajas" },
+      { nombre: "Limón mandarino", cantidad: "1 rodaja" },
+    ],
+    preparacion: [
+      "En un vaso alto, pon 3 rodajas de carambolo con 45 ml de tequila reposado.",
+      "Agrega hielos hasta el tope y vierte 60 ml de Hatsu Tea Amarillo Carambolo & Flor de Loto.",
+      "En la coctelera, vierte el whisky y el zumo de limón mandarino.",
+      "Agita y agrega la mezcla al vaso.",
+      "Decora con 2 medias lunas de limón mandarino y carambolo.",
+    ],
+    advertencias: [
+      "Prohíbase el expendio de bebidas embriagantes a menores de edad",
+      "El exceso de alcohol es perjudicial para la salud",
+    ],
+  },
+  {
+    id: "fontana-loto-punch.png",
+    nombre: "Cocktail – Fontana Loto Punch",
+    autor: "Hatsu",
+    fecha: "2023-11-15",
+    imagen: "fontana-loto.png",
+    producto_destacado_id: "te-amarillo-400ml",
+    ingredientes: [
+      { nombre: "Hatsu Tea Amarillo", cantidad: "400 ml" },
+      { nombre: "Ron", cantidad: "120 ml" },
+      { nombre: "Miel", cantidad: "15 ml" },
+      { nombre: "Zumo de toronja", cantidad: "30 ml" },
+      { nombre: "Carambolo", cantidad: "3 rodajas" },
+      { nombre: "Cáscara de limón", cantidad: "1 tira fina" },
+    ],
+    preparacion: [
+      "Vierte el ron en un vaso con hielo, agrega el Hatsu Tea Amarillo Carambolo & Flor de Loto y termina de llenar con un poco de soda si es necesario.",
+      "Añade la miel de abejas junto con el zumo de toronja.",
+      "Finaliza con las 3 rodajas de carambolo.",
+      "Corta una tira fina de cáscara de limón y agrégala a la mezcla para darle un poco de sabor.",
+    ],
+    advertencias: [
+      "Prohíbase el expendio de bebidas embriagantes a menores de edad",
+      "El exceso de alcohol es perjudicial para la salud",
+    ],
+  },
+];

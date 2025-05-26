@@ -45,7 +45,7 @@ export default function Chatbot() {
       {/* Botón flotante mejorado */}
       <button
         onClick={() => setOpen(!open)}
-        className={`fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-xl transition-all duration-300 ${
+        className={`cursor-pointer fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-xl transition-all duration-300 ${
           open
             ? "bg-rose-600 transform rotate-90"
             : "bg-gradient-to-br from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700"

@@ -89,7 +89,7 @@ export default function Navbar() {
 
               {/* CTA Button */}
               <div className="ml-6 pl-6 border-l border-slate-200">
-                <button className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-6 py-2.5 rounded-xl font-semibold hover:from-emerald-600 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25">
+                <button className="cursor-pointer bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-6 py-2.5 rounded-xl font-semibold hover:from-emerald-600 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25">
                   Comprar ahora
                 </button>
               </div>
