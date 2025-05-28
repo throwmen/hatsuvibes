@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Leaf, ShoppingBag, Heart } from "lucide-react";
+import { Menu, X, Leaf, ShoppingBag, Heart, FileText } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +21,7 @@ export default function Navbar() {
     { href: "/productos", label: "Productos", icon: ShoppingBag },
     { href: "/blog", label: "Blog", icon: Leaf },
     { href: "/mezclas", label: "Mezclas", icon: Heart },
+    { href: "/documento.pdf", label: "Documento", icon: FileText },
   ];
 
   return (
@@ -72,6 +73,12 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
+                  target={item.href.includes(".pdf") ? "_blank" : undefined}
+                  rel={
+                    item.href.includes(".pdf")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
                   className="group relative px-4 py-2 rounded-xl text-slate-700 hover:text-emerald-600 font-medium transition-all duration-300"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -122,7 +129,7 @@ export default function Navbar() {
         {/* Enhanced Mobile menu */}
         <div
           className={`lg:hidden overflow-hidden transition-all duration-500 ${
-            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="bg-white/98 backdrop-blur-xl border-t border-emerald-100/50 shadow-lg">
@@ -133,6 +140,12 @@ export default function Navbar() {
                     key={item.label}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
+                    target={item.href.includes(".pdf") ? "_blank" : undefined}
+                    rel={
+                      item.href.includes(".pdf")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                     className="group flex items-center space-x-3 p-4 rounded-xl text-slate-700 hover:text-emerald-600 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 font-medium transition-all duration-300"
                     style={{
                       animationDelay: `${index * 100}ms`,
